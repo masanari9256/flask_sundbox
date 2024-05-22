@@ -1,3 +1,5 @@
+import datetime
+
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -5,8 +7,10 @@ app = Flask(__name__)
 
 @app.get("/")
 def hello_world():
+    now = datetime.datetime.now()
     return jsonify({
-        "message": "Hello World!"
+        "message": "Hello World!",
+        "now": now
     })
 
 
