@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  app:
+    environment:
+      - FLASK_ENV=production
+    command: uwsgi --ini /var/www/app/config/uwsgi.ini
+
+  nginx:
+    volumes:
+      - ./nginx/config/nginx_uwsgi.conf:/etc/nginx/nginx.conf

@@ -1,15 +1,26 @@
-.PHONY: setup build up ps down python
+.PHONY: setup-dev setup-prd build-dev build-prd up-dev ps down python
 
-setup:
-	@make build
-	@make up
+setup-dev:
+	@make build-dev
+	@make up-dev
 	@make ps
 
-build:
-	docker compose -f compose.yaml build --no-cache
+setup-prd:
+	@make build-prd
+	@make up-prd
+	@make ps
 
-up:
-	docker compose up -d
+build-dev:
+	docker compose -f compose.yaml -f compose.dev.yaml build --no-cache
+
+build-prd:
+	docker compose -f compose.yaml -f compose.prd.yaml build --no-cache
+
+up-dev:
+	docker compose -f compose.yaml -f compose.dev.yaml up -d
+
+up-prd:
+	docker compose -f compose.yaml -f compose.prd.yaml up -d
 
 ps:
 	docker compose ps
