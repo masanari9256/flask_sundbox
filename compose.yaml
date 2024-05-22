@@ -4,8 +4,10 @@ services:
   app:
     container_name: flask_app
     build: ./app
+    environment:
+      - TZ=Asia/Tokyo
     expose:
-      - "3031"
+      - "5000"
     volumes:
       - ./app:/var/www/app
     command: uwsgi --ini /var/www/app/config/uwsgi.ini
@@ -19,4 +21,4 @@ services:
     depends_on:
       - app
     ports:
-      - "8080:80"
+      - "80:80"
