@@ -3,13 +3,14 @@ import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
+app.json.ensure_ascii = False
 
 
 @app.get("/")
 def hello_world():
     now = datetime.datetime.now()
     return jsonify({
-        "message": "Hello World!",
+        "message": "Hello World!文字化け",
         "now": now,
         "env": os.getenv('FLASK_ENV'),
     })
