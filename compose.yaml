@@ -3,7 +3,10 @@ version: '3'
 services:
   app:
     container_name: flask_app
-    build: ./app
+    build:
+      context: ./app
+      args:
+        - platform=linux/amd64
     environment:
       - TZ=Asia/Tokyo
     expose:
@@ -13,7 +16,10 @@ services:
 
   nginx:
     container_name: flask_nginx
-    build: ./nginx
+    build:
+      context: ./nginx
+      args:
+        - platform=linux/amd64
     restart: always
     depends_on:
       - app
