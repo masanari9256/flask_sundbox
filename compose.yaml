@@ -2,11 +2,10 @@ version: '3'
 
 services:
   app:
+    platform: linux/amd64
     container_name: flask_app
     build:
       context: ./app
-      args:
-        - platform=linux/amd64
     environment:
       - TZ=Asia/Tokyo
     expose:
@@ -15,11 +14,10 @@ services:
       - ./app:/var/www/app
 
   nginx:
+    platform: linux/amd64
     container_name: flask_nginx
     build:
       context: ./nginx
-      args:
-        - platform=linux/amd64
     restart: always
     depends_on:
       - app
