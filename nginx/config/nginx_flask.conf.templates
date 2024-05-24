@@ -21,7 +21,7 @@ http {
     keepalive_timeout  65;
 
     upstream app_server {
-        server flask_app:5000;
+        server ${SERVER_NAME}:5000;
     }
 
 
@@ -33,7 +33,7 @@ http {
         location / {
             client_max_body_size 1m;
             client_body_buffer_size 8k;
-            proxy_pass http://flask_app:5000;
+            proxy_pass http://${SERVER_NAME}:5000;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

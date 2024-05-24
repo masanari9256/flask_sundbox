@@ -3,7 +3,7 @@ version: '3'
 services:
   app:
     platform: linux/amd64
-    container_name: flask_app
+    container_name: app_${COMPOSE_PROJECT_NAME}
     build:
       context: ./app
     environment:
@@ -15,7 +15,7 @@ services:
 
   nginx:
     platform: linux/amd64
-    container_name: flask_nginx
+    container_name: nginx_${COMPOSE_PROJECT_NAME}
     build:
       context: ./nginx
     restart: always

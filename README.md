@@ -2,6 +2,9 @@
 
 ## 環境構築
 
+### 最初にやること 
+- [.env](.env)から、プロジェクト名を指定
+
 ### dev環境
 
 - flaskの開発サーバ + Nginxを使用
@@ -36,3 +39,5 @@
 # 参考サイトなど
 
 - https://qiita.com/yoshi-kin/items/c5a2a4ddb45adfd00fce
+- https://qiita.com/dtan4/items/0fe6cca5487698afa68c
+- https://qiita.com/takyam/items/e92e5a6ca1548cbd58db#conf

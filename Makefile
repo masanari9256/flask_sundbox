@@ -14,7 +14,7 @@ setup-prd:
 
 # dev環境のビルド
 build-dev:
-	docker compose -f compose.yaml -f compose.dev.yaml build --no-cache
+	docker compose --env-file .env -f compose.yaml -f compose.dev.yaml build --no-cache
 
 # prd環境のビルド
 build-prd:

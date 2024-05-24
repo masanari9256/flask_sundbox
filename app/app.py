@@ -10,7 +10,7 @@ app.json.ensure_ascii = False
 def hello_world():
     now = datetime.datetime.now()
     return jsonify({
-        "message": "Hello World!文字化け",
+        "message": "Hello World!",
         "now": now,
         "env": os.getenv('FLASK_ENV'),
     })
