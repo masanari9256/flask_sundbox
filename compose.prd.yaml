@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    environment:
+      - FLASK_ENV=production
+    command: uwsgi --ini /var/www/app/config/uwsgi.ini
+
+  nginx:
+    environment:
+      - SERVER_NAME=app_${COMPOSE_PROJECT_NAME}
+    volumes:
+      - ./nginx/config/nginx_uwsgi.conf.templates:/etc/nginx/nginx.conf.templates
+    command: /bin/sh -c "envsubst '$$SERVER_NAME' < /etc/nginx/nginx.conf.templates > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"

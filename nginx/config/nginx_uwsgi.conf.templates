@@ -21,7 +21,7 @@ http {
     keepalive_timeout  65;
 
     upstream app_server {
-        server flask_app:5000;
+        server ${SERVER_NAME}:5000;
     }
 
 

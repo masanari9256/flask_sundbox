@@ -2,22 +2,23 @@ version: '3'
 
 services:
   app:
-    container_name: flask_app
-    build: ./app
+    platform: linux/amd64
+    container_name: app_${COMPOSE_PROJECT_NAME}
+    build:
+      context: ./app
     environment:
       - TZ=Asia/Tokyo
     expose:
       - "5000"
     volumes:
       - ./app:/var/www/app
-    command: uwsgi --ini /var/www/app/config/uwsgi.ini
 
   nginx:
-    container_name: flask_nginx
-    build: ./nginx
+    platform: linux/amd64
+    container_name: nginx_${COMPOSE_PROJECT_NAME}
+    build:
+      context: ./nginx
     restart: always
-    volumes:
-      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - app
     ports:

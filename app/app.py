@@ -1,8 +1,9 @@
 import datetime
-
+import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
+app.json.ensure_ascii = False
 
 
 @app.get("/")
@@ -10,9 +11,11 @@ def hello_world():
     now = datetime.datetime.now()
     return jsonify({
         "message": "Hello World!",
-        "now": now
+        "now": now,
+        "env": os.getenv('FLASK_ENV'),
     })
 
 
 if __name__ == '__main__':
-    app.run()
+    debug = os.getenv('FLASK_ENV') == 'development'
+    app.run(debug=debug, host='0.0.0.0', port=5000)
