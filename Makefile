@@ -14,28 +14,28 @@ setup-prd:
 
 # dev環境のビルド
 build-dev:
-	docker compose --env-file .env -f compose.yaml -f compose.dev.yaml build --no-cache
+	docker compose --env-file docker/.env -f docker/compose.yaml -f docker/compose.dev.yaml build --no-cache
 
 # prd環境のビルド
 build-prd:
-	docker compose -f compose.yaml -f compose.prd.yaml build --no-cache
+	docker compose -f docker/compose.yaml -f docker/compose.prd.yaml build --no-cache
 
 # dev環境の立ち上げ
 up-dev:
-	docker compose -f compose.yaml -f compose.dev.yaml up -d
+	docker compose -f docker/compose.yaml -f docker/compose.dev.yaml up -d
 
 # prd環境の立ち上げ
 up-prd:
-	docker compose -f compose.yaml -f compose.prd.yaml up -d
+	docker compose -f docker/compose.yaml -f docker/compose.prd.yaml up -d
 
 # コンテナの状態を確認
 ps:
-	docker compose ps
+	docker compose -f docker/compose.yaml ps
 
 # コンテナを停止する
 down:
-	docker compose down
+	docker compose -f docker/compose.yaml down
 
 # pythonが使用できるコンテナに入る
 python:
-	docker compose exec app bash
+	docker compose -f docker/compose.yaml exec app bash

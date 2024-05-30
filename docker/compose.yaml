@@ -5,13 +5,14 @@ services:
     platform: linux/amd64
     container_name: app_${COMPOSE_PROJECT_NAME}
     build:
-      context: ./app
+      context: ..
+      dockerfile: docker/python/Dockerfile
     environment:
       - TZ=Asia/Tokyo
     expose:
       - "5000"
     volumes:
-      - ./app:/var/www/app
+      - ../app:/var/www/app
 
   nginx:
     platform: linux/amd64
